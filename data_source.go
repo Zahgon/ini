@@ -15,10 +15,7 @@
 package ini
 
 import (
-	"bytes"
-	"fmt"
 	"io"
-	"os"
 )
 
 var (
@@ -38,16 +35,20 @@ type sourceFile struct {
 }
 
 func (s sourceFile) ReadCloser() (_ io.ReadCloser, err error) {
-	return os.Open(s.name)
+	_ = "STUB: not implemented"
+	return *
+
+	// sourceData represents an object that contains content in memory.
+	new(io.ReadCloser), nil
 }
 
-// sourceData represents an object that contains content in memory.
 type sourceData struct {
 	data []byte
 }
 
 func (s *sourceData) ReadCloser() (io.ReadCloser, error) {
-	return io.NopCloser(bytes.NewReader(s.data)), nil
+	_ = "STUB: not implemented"
+	return *new(io.ReadCloser), nil
 }
 
 // sourceReadCloser represents an input stream with Close method.
@@ -56,20 +57,11 @@ type sourceReadCloser struct {
 }
 
 func (s *sourceReadCloser) ReadCloser() (io.ReadCloser, error) {
-	return s.reader, nil
+	_ = "STUB: not implemented"
+	return *new(io.ReadCloser), nil
 }
 
 func parseDataSource(source interface{}) (dataSource, error) {
-	switch s := source.(type) {
-	case string:
-		return sourceFile{s}, nil
-	case []byte:
-		return &sourceData{s}, nil
-	case io.ReadCloser:
-		return &sourceReadCloser{s}, nil
-	case io.Reader:
-		return &sourceReadCloser{io.NopCloser(s)}, nil
-	default:
-		return nil, fmt.Errorf("error parsing data source: unknown type %q", s)
-	}
+	_ = "STUB: not implemented"
+	return *new(dataSource), nil
 }

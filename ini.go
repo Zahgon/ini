@@ -132,45 +132,35 @@ type DebugFunc func(message string)
 
 // LoadSources allows caller to apply customized options for loading from data source(s).
 func LoadSources(opts LoadOptions, source interface{}, others ...interface{}) (_ *File, err error) {
-	sources := make([]dataSource, len(others)+1)
-	sources[0], err = parseDataSource(source)
-	if err != nil {
-		return nil, err
-	}
-	for i := range others {
-		sources[i+1], err = parseDataSource(others[i])
-		if err != nil {
-			return nil, err
-		}
-	}
-	f := newFile(sources, opts)
-	if err = f.Reload(); err != nil {
-		return nil, err
-	}
-	return f, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Load loads and parses from INI data sources.
 // Arguments can be mixed of file name with string type, or raw data in []byte.
 // It will return error if list contains nonexistent files.
 func Load(source interface{}, others ...interface{}) (*File, error) {
-	return LoadSources(LoadOptions{}, source, others...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // LooseLoad has exactly same functionality as Load function
 // except it ignores nonexistent files instead of returning error.
 func LooseLoad(source interface{}, others ...interface{}) (*File, error) {
-	return LoadSources(LoadOptions{Loose: true}, source, others...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // InsensitiveLoad has exactly same functionality as Load function
 // except it forces all section and key names to be lowercased.
 func InsensitiveLoad(source interface{}, others ...interface{}) (*File, error) {
-	return LoadSources(LoadOptions{Insensitive: true}, source, others...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // ShadowLoad has exactly same functionality as Load function
 // except it allows have shadow keys.
 func ShadowLoad(source interface{}, others ...interface{}) (*File, error) {
-	return LoadSources(LoadOptions{AllowShadows: true}, source, others...)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
